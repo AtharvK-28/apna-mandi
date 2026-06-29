@@ -329,7 +329,7 @@ const KarigarConnect = () => {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Link to="/deals" className="flex items-center space-x-1.5 text-primary hover:text-primary/80 transition-colors">
+              <Link to="/home" className="flex items-center space-x-1.5 text-primary hover:text-primary/80 transition-colors">
                 <Icon name="Home" size={18} />
                 <span className="font-medium text-sm">Home</span>
               </Link>
