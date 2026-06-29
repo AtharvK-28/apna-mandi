@@ -16,6 +16,11 @@ const UserTypeToggle = ({ selectedType, onTypeChange }) => {
         description: "Street food stall owner",
         icon: "Store"
       },
+      karigar: {
+        label: "Karigar",
+        description: "Skilled kitchen worker",
+        icon: "Wrench"
+      },
       supplier: {
         label: "Supplier",
         description: "Raw material supplier",
@@ -27,6 +32,11 @@ const UserTypeToggle = ({ selectedType, onTypeChange }) => {
         label: "विक्रेता",
         description: "स्ट्रीट फूड स्टॉल मालिक",
         icon: "Store"
+      },
+      karigar: {
+        label: "कारीगर",
+        description: "कुशल रसोई कर्मचारी",
+        icon: "Wrench"
       },
       supplier: {
         label: "आपूर्तिकर्ता",
@@ -41,7 +51,7 @@ const UserTypeToggle = ({ selectedType, onTypeChange }) => {
       <p className="text-sm font-medium text-foreground text-center">
         {currentLanguage === 'en' ? 'I am a' : 'मैं हूँ'}
       </p>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-3 gap-3">
         {Object.entries(userTypes[currentLanguage]).map(([type, config]) => (
           <button
             key={type}

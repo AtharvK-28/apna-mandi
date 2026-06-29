@@ -8,6 +8,7 @@ import OTPInput from './components/OTPInput';
 import UserTypeToggle from './components/UserTypeToggle';
 import VendorRegistrationForm from './components/VendorRegistrationForm';
 import SupplierRegistrationForm from './components/SupplierRegistrationForm';
+import KarigarRegistrationForm from './components/KarigarRegistrationForm';
 import SecurityBadges from './components/SecurityBadges';
 import PrivacyMessage from './components/PrivacyMessage';
 
@@ -28,6 +29,10 @@ const AuthenticationPage = () => {
     vendor: {
       phone: '9876543210',
       otp: '123456'
+    },
+    karigar: {
+      phone: '9876543212',
+      otp: '111111'
     },
     supplier: {
       phone: '9876543211',
@@ -106,7 +111,7 @@ const AuthenticationPage = () => {
 
   const validateRegistration = () => {
     const newErrors = {};
-    
+
     if (userType === 'vendor') {
       if (!registrationData.stallName) {
         newErrors.stallName = currentLanguage === 'en' ?'Stall name is required' :'स्टॉल का नाम आवश्यक है';
@@ -122,6 +127,25 @@ const AuthenticationPage = () => {
       }
       if (!registrationData.operatingHours) {
         newErrors.operatingHours = currentLanguage === 'en' ?'Operating hours are required' :'संचालन समय आवश्यक है';
+      }
+    } else if (userType === 'karigar') {
+      if (!registrationData.fullName) {
+        newErrors.fullName = currentLanguage === 'en' ? 'Full name is required' : 'पूरा नाम आवश्यक है';
+      }
+      if (!registrationData.location) {
+        newErrors.location = currentLanguage === 'en' ? 'Location is required' : 'स्थान आवश्यक है';
+      }
+      if (!registrationData.skills) {
+        newErrors.skills = currentLanguage === 'en' ? 'Skills are required' : 'कौशल आवश्यक हैं';
+      }
+      if (!registrationData.experience) {
+        newErrors.experience = currentLanguage === 'en' ? 'Experience is required' : 'अनुभव आवश्यक है';
+      }
+      if (!registrationData.availability) {
+        newErrors.availability = currentLanguage === 'en' ? 'Availability is required' : 'उपलब्धता आवश्यक है';
+      }
+      if (!registrationData.hourlyRate) {
+        newErrors.hourlyRate = currentLanguage === 'en' ? 'Hourly rate is required' : 'प्रति घंटा दर आवश्यक है';
       }
     } else {
       if (!registrationData.businessName) {
@@ -196,9 +220,11 @@ const AuthenticationPage = () => {
         ...registrationData
       }));
       
-      // Navigate to appropriate dashboard
+      // Navigate to appropriate destination
       if (userType === 'vendor') {
-        navigate('/vendor-dashboard');
+        navigate('/home');
+      } else if (userType === 'karigar') {
+        navigate('/karigar-connect');
       } else {
         navigate('/supplier-dashboard');
       }
@@ -322,6 +348,12 @@ const AuthenticationPage = () => {
                   onChange={setRegistrationData}
                   errors={errors}
                 />
+              ) : userType === 'karigar' ? (
+                <KarigarRegistrationForm
+                  formData={registrationData}
+                  onChange={setRegistrationData}
+                  errors={errors}
+                />
               ) : (
                 <SupplierRegistrationForm
                   formData={registrationData}
@@ -395,6 +427,15 @@ const AuthenticationPage = () => {
                 </div>
                 <div>
                   <p className="font-medium">
+                    {currentLanguage === 'en' ? 'Karigar:' : 'कारीगर:'}
+                  </p>
+                  <p className="text-muted-foreground">
+                    {currentLanguage === 'en' ? 'Phone:' : 'फोन:'} {mockCredentials.karigar.phone}
+                  </p>
+                  <p className="text-muted-foreground">OTP: {mockCredentials.karigar.otp}</p>
+                </div>
+                <div>
+                  <p className="font-medium">
                     {currentLanguage === 'en' ? 'Supplier:' : 'आपूर्तिकर्ता:'}
                   </p>
                   <p className="text-muted-foreground">
@@ -421,7 +462,7 @@ const AuthenticationPage = () => {
           </div>
           <Button
             variant="outline"
-            onClick={() => navigate('/deals')}
+            onClick={() => navigate('/home')}
             className="mt-4 w-full"
             size="lg"
           >
