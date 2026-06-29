@@ -16,7 +16,7 @@ const Header = () => {
       <div className="container-responsive">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/deals" className="flex items-center space-x-2">
+          <Link to="/home" className="flex items-center space-x-2">
             <div className="relative">
               <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center shadow-elevation-2">
                 <Icon name="ShoppingBag" size={20} className="text-primary-foreground" />
@@ -25,61 +25,25 @@ const Header = () => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold gradient-text">Apna Mandi</h1>
-              <p className="text-xs text-muted-foreground">Fresh Groceries Delivered</p>
+              <p className="text-xs text-muted-foreground">Kitchen Help, On Demand</p>
             </div>
           </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <NavLink 
-              to="/deals" 
-              className={({ isActive }) =>
-                `nav-link group relative ${isActive ? 'active' : ''}`
-              }
-            >
-              <span className="flex items-center space-x-1">
-                <Icon name="Tag" size={16} className="group-hover:text-primary transition-colors" />
-                <span>Deals</span>
-              </span>
-            </NavLink>
-
-            {/* Group Buy entry point – deep-links into cart's group-buy experience */}
             <NavLink
-              to="/cart?view=group-buy"
+              to="/home"
               className={({ isActive }) =>
                 `nav-link group relative ${isActive ? 'active' : ''}`
               }
             >
               <span className="flex items-center space-x-1">
-                <Icon name="Users" size={16} className="group-hover:text-primary transition-colors" />
-                <span>Group Buy</span>
+                <Icon name="Home" size={16} className="group-hover:text-primary transition-colors" />
+                <span>Home</span>
               </span>
             </NavLink>
-
-            <NavLink 
-              to="/vendor-exchange" 
-              className={({ isActive }) =>
-                `nav-link group relative ${isActive ? 'active' : ''}`
-              }
-            >
-              <span className="flex items-center space-x-1">
-                <Icon name="RefreshCw" size={16} className="group-hover:text-primary transition-colors" />
-                <span>Vendor Exchange</span>
-              </span>
-            </NavLink>
-            <NavLink 
-              to="/virasaat" 
-              className={({ isActive }) =>
-                `nav-link group relative ${isActive ? 'active' : ''}`
-              }
-            >
-              <span className="flex items-center space-x-1">
-                <Icon name="Crown" size={16} className="group-hover:text-primary transition-colors" />
-                <span>Virasaat</span>
-              </span>
-            </NavLink>
-            <NavLink 
-              to="/karigar-connect" 
+            <NavLink
+              to="/karigar-connect"
               className={({ isActive }) =>
                 `nav-link group relative ${isActive ? 'active' : ''}`
               }
@@ -89,19 +53,41 @@ const Header = () => {
                 <span>Karigar Connect</span>
               </span>
             </NavLink>
-            <NavLink 
-              to="/orders" 
+            <NavLink
+              to="/vendor-exchange"
               className={({ isActive }) =>
                 `nav-link group relative ${isActive ? 'active' : ''}`
               }
             >
               <span className="flex items-center space-x-1">
-                <Icon name="Package" size={16} className="group-hover:text-primary transition-colors" />
-                <span>Orders</span>
+                <Icon name="RefreshCw" size={16} className="group-hover:text-primary transition-colors" />
+                <span>Exchange</span>
               </span>
             </NavLink>
-                      <NavLink
-              to="/dashboard" 
+            <NavLink
+              to="/virasaat"
+              className={({ isActive }) =>
+                `nav-link group relative ${isActive ? 'active' : ''}`
+              }
+            >
+              <span className="flex items-center space-x-1">
+                <Icon name="Crown" size={16} className="group-hover:text-primary transition-colors" />
+                <span>Virasaat</span>
+              </span>
+            </NavLink>
+            <NavLink
+              to="/deals"
+              className={({ isActive }) =>
+                `nav-link group relative ${isActive ? 'active' : ''}`
+              }
+            >
+              <span className="flex items-center space-x-1">
+                <Icon name="Tag" size={16} className="group-hover:text-primary transition-colors" />
+                <span>Deals</span>
+              </span>
+            </NavLink>
+            <NavLink
+              to="/dashboard"
               className={({ isActive }) =>
                 `nav-link group relative ${isActive ? 'active' : ''}`
               }
@@ -110,7 +96,7 @@ const Header = () => {
                 <Icon name="BarChart3" size={16} className="group-hover:text-primary transition-colors" />
                 <span>Dashboard</span>
               </span>
-                      </NavLink>
+            </NavLink>
           </nav>
 
           {/* Right side actions */}
@@ -145,7 +131,7 @@ const Header = () => {
             <div className="flex items-center justify-between">
               <div className="flex flex-wrap items-center gap-2">
                 <NavLink
-                  to="/deals"
+                  to="/home"
                   className={({ isActive }) =>
                     `flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-muted transition-colors ${
                       isActive ? 'bg-muted' : ''
@@ -153,11 +139,11 @@ const Header = () => {
                   }
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Icon name="Tag" size={16} />
-                  <span className="text-sm">Deals</span>
+                  <Icon name="Home" size={16} />
+                  <span className="text-sm">Home</span>
                 </NavLink>
                 <NavLink
-                  to="/cart?view=group-buy"
+                  to="/karigar-connect"
                   className={({ isActive }) =>
                     `flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-muted transition-colors ${
                       isActive ? 'bg-muted' : ''
@@ -165,8 +151,8 @@ const Header = () => {
                   }
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Icon name="Users" size={16} />
-                  <span className="text-sm">Group Buy</span>
+                  <Icon name="Wrench" size={16} />
+                  <span className="text-sm">Karigar</span>
                 </NavLink>
                 <NavLink
                   to="/vendor-exchange"
@@ -193,7 +179,7 @@ const Header = () => {
                   <span className="text-sm">Virasaat</span>
                 </NavLink>
                 <NavLink
-                  to="/karigar-connect"
+                  to="/deals"
                   className={({ isActive }) =>
                     `flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-muted transition-colors ${
                       isActive ? 'bg-muted' : ''
@@ -201,20 +187,8 @@ const Header = () => {
                   }
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Icon name="Wrench" size={16} />
-                  <span className="text-sm">Karigar</span>
-                </NavLink>
-                <NavLink
-                  to="/orders"
-                  className={({ isActive }) =>
-                    `flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-muted transition-colors ${
-                      isActive ? 'bg-muted' : ''
-                    }`
-                  }
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Icon name="Package" size={16} />
-                  <span className="text-sm">Orders</span>
+                  <Icon name="Tag" size={16} />
+                  <span className="text-sm">Deals</span>
                 </NavLink>
                 <NavLink
                   to="/dashboard"

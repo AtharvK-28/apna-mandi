@@ -3,6 +3,7 @@ import { BrowserRouter, Routes as RouterRoutes, Route } from "react-router-dom";
 import ScrollToTop from "components/ScrollToTop";
 import ErrorBoundary from "components/ErrorBoundary";
 // Add your imports here
+import Home from "pages/home";
 import VendorDashboard from "pages/vendor-dashboard";
 import DealDiscoveryShopping from "pages/deal-discovery-shopping";
 import AuthenticationLoginRegister from "pages/authentication-login-register";
@@ -21,18 +22,22 @@ const Routes = () => {
       <ErrorBoundary>
       <ScrollToTop />
       <RouterRoutes>
-        {/* Define your routes here */}
+        {/* Auth */}
         <Route path="/" element={<AuthenticationLoginRegister />} />
         <Route path="/login" element={<AuthenticationLoginRegister />} />
+        {/* Core MVP — Karigar Connect */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/karigar-connect" element={<KarigarConnect />} />
+        {/* Phase 2 & 3 */}
+        <Route path="/vendor-exchange" element={<VendorExchange />} />
+        <Route path="/virasaat" element={<Virasaat />} />
+        {/* Supporting pages */}
         <Route path="/deals" element={<DealDiscoveryShopping />} />
         <Route path="/cart" element={<ShoppingCartCheckout />} />
         <Route path="/orders" element={<OrderTrackingHistory />} />
         <Route path="/dashboard" element={<VendorDashboard />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/vendor-exchange" element={<VendorExchange />} />
-        <Route path="/virasaat" element={<Virasaat />} />
-        <Route path="/karigar-connect" element={<KarigarConnect />} />
-        {/* Legacy routes for backward compatibility */}
+        {/* Legacy routes */}
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/deal-discovery-shopping" element={<DealDiscoveryShopping />} />
         <Route path="/authentication-login-register" element={<AuthenticationLoginRegister />} />
